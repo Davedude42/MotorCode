@@ -1,11 +1,25 @@
 import serial
 #import keyboard
 import time
-import sys
 
+# This is code for testing the serial writing in python and the steering
+
+#115200
 ser = serial.Serial('/dev/ttyACM0', baudrate=115200, timeout=1)
 
-ser.write(bytes(f"{sys.argv[1]} {sys.argv[2]}", 'utf-8'))
+
+while True:
+	for i in range(40):
+		ser.write(b"right\n")
+		time.sleep(0.05)
+
+	for i in range(40):
+		ser.write(b"left\n")
+		time.sleep(0.05)
+
+	for i in range(40):
+		ser.write(b"forward\n")
+		time.sleep(0.05)
 
 
 """
